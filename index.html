@@ -164,16 +164,16 @@
     <section class="contact" id="contact">
       <h2 class="heading">Hubungi <span>Saya!</span></h2>
 
-      <form action="send_email.php" method="post">
+      <form action="send_email.php" method="POST">
         <div class="input-box">
-          <input type="text" placeholder="Nama Lengkap" />
-          <input type="email" placeholder="Alamat Email" />
+          <input type="text" id="nama" name="nama" placeholder="Nama Lengkap" required/>
+          <input type="email" id="email" name="email" placeholder="Alamat Email" required/>
         </div>
         <div class="input-box">
-          <input type="number" placeholder="Nomor Handphone" />
-          <input type="text" placeholder="Subjek Email" />
+          <input type="text" id="nomor" name="nomor" placeholder="Nomor Handphone" required/>
+          <input type="text" id="subjek" name="subjek" placeholder="Subjek Email" required/>
         </div>
-        <textarea name="" id="" cols="30" rows="10" placeholder="Pesan Anda"></textarea>
+        <textarea name="pesan" id="pesan" cols="30" rows="10" placeholder="Pesan Anda" required></textarea>
         <input type="submit" value="Kirim Pesan" class="btn" />
       </form>
     </section>

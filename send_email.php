@@ -1,26 +1,37 @@
 <?php
+$message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = strip_tags(trim($_POST["name"]));
-    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-    $message = trim($_POST["message"]);
+    // Ambil data dari formulir
+    $nama = htmlspecialchars($_POST['nama']);
+    $email = htmlspecialchars($_POST['email']);
+    $nomor = htmlspecialchars($_POST['nomor']);
+    $subjek = htmlspecialchars($_POST['subjek']);
+    $pesan = htmlspecialchars($_POST['pesan']);
 
-    if (!empty($name) && !empty($email) && !empty($message) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $recipient = "irayuliansah@gmail.com";
-        $subject = "New Contact from $name";
-        $email_content = "Name: $name\n";
-        $email_content .= "Email: $email\n\n";
-        $email_content .= "Message:\n$message\n";
-        $email_headers = "From: $name <$email>";
+    // Format data yang akan disimpan
+    $data = "Nama: $nama\nEmail: $email\nNomor: $nomor\nSubjek: $subjek\nPesan: $pesan\n\n";
 
-        if (mail($recipient, $subject, $email_content, $email_headers)) {
-            echo "Thank you! Your message has been sent.";
-        } else {
-            echo "Oops! Something went wrong and we couldn't send your message.";
-        }
-    } else {
-        echo "Oops! There was a problem with your submission. Please complete the form and try again.";
-    }
-} else {
-    echo "There was a problem with your submission, please try again.";
+    // Tentukan nama file teks
+    $file = 'messages.txt';
+
+    // Simpan data ke dalam file teks
+    file_put_contents($file, $data, FILE_APPEND | LOCK_EX);
+
+    // Pesan sukses
+    $message = "Pesan Anda telah berhasil dikirim.";
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Pengiriman Pesan</title>
+</head>
+<body>
+    
+    <?php
+    if (!empty($message)) {
+        echo "<p>$message</p>";
+    }
+    ?>
+</body>
+</html>
