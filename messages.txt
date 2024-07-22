@@ -16,3 +16,17 @@ Nomor: 085724340450
 Subjek: contoh
 Pesan: hi
 
+
+
+Nama: Andra Firmansyah
+Email: andra@gmail.com
+Nomor: -
+Subjek: tes
+Pesan: ini portfolio
+
+Nama: killua
+Email: killua@gmail.com
+Nomor: 08**********
+Subjek: pesan
+Pesan: ini portfolio
+
