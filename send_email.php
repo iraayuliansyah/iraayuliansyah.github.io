@@ -17,8 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Simpan data ke dalam file teks
     file_put_contents($file, $data, FILE_APPEND | LOCK_EX);
 
-    // Pesan sukses
-    $message = "Pesan Anda telah berhasil dikirim.";
+    // Redirect ke halaman display_messages.php
+    header("Location: display_messages.php");
+    exit();
 }
 ?>
 <!DOCTYPE html>
