@@ -3,6 +3,12 @@
 <head>
     <title>Messages Table</title>
     <style>
+        body {
+            background-color: #323946;
+        }
+        h2 {
+            color: #fff;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -14,8 +20,11 @@
             padding: 8px;
             text-align: left;
         }
+        td {
+            background-color: #F9ECF6;
+        }
         th {
-            background-color: #f2f2f2;
+            background-color: rgb(248, 148, 215);
         }
         .btn {
             padding: 5px 10px;
@@ -39,7 +48,7 @@
 </head>
 <body>
 
-<h2>Messages Table</h2>
+<h2 align="center">Messages Table</h2>
 
 <table>
     <tr>
