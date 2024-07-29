@@ -1,9 +1,3 @@
-Nama: ira
-Email: irayuliansah@gmail.com
-Nomor: 085724340450
-Subjek: contoh
-Pesan: hii
-
 Nama: ira yuliansyah
 Email: ira@go.com
 Nomor: -
@@ -15,3 +9,15 @@ Email: andra@go.com
 Nomor: -
 Subjek: contoh
 Pesan: hi
+
+Nama: ira
+Email: irayuliansah@gmail.com
+Nomor: -
+Subjek: tes
+Pesan: hi
+Nama: ira
+Email: andra@go.com
+Nomor: -
+Subjek: contoh
+Pesan: ii
+

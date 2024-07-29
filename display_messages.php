@@ -4,51 +4,60 @@
     <title>Messages Table</title>
     <style>
         body {
-            background-color: #323946;
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 20px;
         }
         h2 {
-            color: #fff;
+            text-align: center;
+            color: #333;
         }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
         }
         table, th, td {
             border: 1px solid black;
         }
         th, td {
-            padding: 8px;
+            border: 1px solid #ddd;
+            padding: 12px;
             text-align: left;
         }
-        td {
-            background-color: #F9ECF6;
-        }
-        th {
+        th {    
             background-color: rgb(248, 148, 215);
+            color: white;
         }
-        .btn {
-            padding: 5px 10px;
-            text-align: center;
+        tr:nth-child(even){
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #fadef4;
+        }
+        .action-buttons a {
+            padding: 8px 12px;
+            margin: 0 5px;
             text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            margin: 2px 1px;
-            cursor: pointer;
-            border: none;
+            color: white;
+            border-radius: 4px;
         }
-        .btn-edit {
+        .edit-button {
             background-color: #4CAF50;
-            color: white;
         }
-        .btn-delete {
-            background-color: #f44336;
-            color: white;
+        .delete-button {
+            background-color:#f44336;
+        }
+        .action-buttons a:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
 
-<h2 align="center">Messages Table</h2>
+<h2>Messages Table</h2>
 
 <table>
     <tr>
