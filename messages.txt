@@ -15,9 +15,3 @@ Email: irayuliansah@gmail.com
 Nomor: -
 Subjek: tes
 Pesan: hi
-Nama: ira
-Email: andra@go.com
-Nomor: -
-Subjek: contoh
-Pesan: ii
-
