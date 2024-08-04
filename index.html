@@ -11,118 +11,6 @@
 
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css" />
-
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyB7nFxlIBp18ayiVQufi-4zmAcjrCC56os",
-        authDomain: "projek1-c5645.firebaseapp.com",
-        databaseURL: "https://projek1-c5645-default-rtdb.firebaseio.com",
-        projectId: "projek1-c5645",
-        storageBucket: "projek1-c5645.appspot.com",
-        messagingSenderId: "438738259293",
-        appId: "1:438738259293:web:158f2cc80248c19967ecb4",
-        measurementId: "G-FEGLJ26RVG"
-      };
-    
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-
-      function handleSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const data = {
-                name: form.name.value,
-                email: form.email.value,
-                phone: form.phone.value,
-                subjek: form.subjek.value,
-                pesan: form.pesan.value
-            };
-
-            // Kirim data ke Firebase Realtime Database
-            firebase.database().ref('contacts').push(data).then(() => {
-                alert('Message sent successfully!');
-                form.reset();
-                loadTable();
-            }).catch(error => {
-                alert('Error sending message.');
-                console.error(error);
-            });
-        }
-
-        function loadTable() {
-            const table = document.getElementById('responsesTable');
-            table.innerHTML = '<tr><th>Timestamp</th><th>Name</th><th>Email</th><th>Phone</th><th>Subjek</th><th>Pesan</th><th>Actions</th></tr>';
-            firebase.database().ref('contacts').on('value', snapshot => {
-                snapshot.forEach(row => {
-                    const data = row.val();
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${new Date(row.key).toLocaleString()}</td>
-                        <td>${data.name}</td>
-                        <td>${data.email}</td>
-                        <td>${data.phone}</td>
-                        <td>${data.subjek}</td>
-                        <td>${data.pesan}</td>
-                        <td>
-                            <button onclick="editData('${row.key}', '${data.name}', '${data.email}', '${data.phone}', '${data.subjek}', '${data.pesan}')">Edit</button>
-                            <button onclick="deleteData('${row.key}')">Delete</button>
-                        </td>
-                    `;
-                    table.appendChild(tr);
-                });
-            });
-        }
-
-        function editData(id, name, email, phone, subjek, pesan) {
-            document.getElementById('name').value = name;
-            document.getElementById('email').value = email;
-            document.getElementById('phone').value = phone;
-            document.getElementById('subjek').value = subjek;
-            document.getElementById('pesan').value = pesan;
-            document.getElementById('submitBtn').innerText = 'Update';
-            document.getElementById('submitBtn').onclick = function(event) {
-                event.preventDefault();
-                const data = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    subjek: document.getElementById('subjek').value,
-                    pesan: document.getElementById('pesan').value
-                };
-                firebase.database().ref('contacts').child(id).set(data).then(() => {
-                    alert('Message updated successfully!');
-                    document.getElementById('contactForm').reset();
-                    document.getElementById('submitBtn').innerText = 'Send';
-                    document.getElementById('submitBtn').onclick = handleSubmit;
-                    loadTable();
-                }).catch(error => {
-                    alert('Error updating message.');
-                    console.error(error);
-                });
-            }
-        }
-
-        function deleteData(id) {
-            firebase.database().ref('contacts').child(id).remove().then(() => {
-                alert('Message deleted successfully!');
-                loadTable();
-            }).catch(error => {
-                alert('Error deleting message.');
-                console.error(error);
-            });
-        }
-
-        window.onload = loadTable;
-    </script>
     
   </head>
 
@@ -283,7 +171,7 @@
     <section class="contact" id="contact">
       <h2 class="heading">Hubungi <span>Saya!</span></h2>
 
-      <form id="contactForm" onsubmit="handleSubmit(event)">
+      <form action="https://formspree.io/f/mgvwkrvz" method="POST">
         <div class="input-box">
           <input type="text" id="name" name="name" placeholder="Name" required/>
           <input type="text" id="email" name="email" placeholder="Email" required/>
@@ -293,24 +181,10 @@
           <input type="text" id="subjek" name="subjek" placeholder="Subjek" required/>
         </div>
         
-        <textarea name="pesan" id="pesan" cols="30" rows="10" placeholder="Pesan" required></textarea>
-        <input type="submit" value="Kirim Pesan" class="btn" id="submitBtn" />
+        <textarea name="message" id="message" cols="30" rows="10" placeholder="Message" required></textarea>
+        <input type="submit" value="Send" class="btn" />
       </form>
-
     </section>
-
-    <h2>Responses</h2>
-    <table id="responsesTable" border="1">
-      <tr>
-        <th>Timestamp</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Subjek </th>
-        <th>Pesan </th>
-        <th>Actions</th>
-      </tr>
-    </table>
-
 
     <!--footer design-->
     <footer class="footer">
